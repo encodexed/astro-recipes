@@ -1,5 +1,5 @@
 ---
-import Header from "../components/Header.tsx";
+import Header from "../components/Header.astro";
 interface Props {
 	title: string;
 	description?: string;
@@ -18,7 +18,7 @@ const { title, description = "A recipe site for Robbie" } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
-		<Header client:load />
+		<Header />
 		<slot />
 	</body>
 </html>
