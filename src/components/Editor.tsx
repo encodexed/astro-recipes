@@ -5,11 +5,27 @@ const Editor = () => {
 	const [body, setBody] = useState<string>("");
 
 	const save = async () => {
+		console.log("Attempting to save... (Editor component)");
 		await fetch("/api/recipes", {
 			method: "POST",
 			body: JSON.stringify({ title, body }),
 		});
+		console.log("We got past the fetch");
 	};
+
+	// const get = async () => {
+	// 	console.log("Getting something");
+	// 	const data = await fetch("api/recipes", {
+	// 		method: "GET",
+	// 	});
+	// 	console.log({ data });
+	// };
+
+	// const getJson = async () => {
+	// 	console.log("Getting JSON");
+	// 	const data = await fetch("api/test.json");
+	// 	console.log(data);
+	// };
 
 	return (
 		<section className='flex justify-center'>
@@ -30,7 +46,21 @@ const Editor = () => {
 					value={body}
 					onChange={(e) => setBody(e.target.value)}
 				/>
-				<button onClick={save}>Save</button>
+				<button
+					className='p-2 border border-grey-300 hover:bg-green-300'
+					onClick={save}
+				>
+					Save
+				</button>
+				{/* <button
+					className='p-2 border border-grey-300 hover:bg-amber-300'
+					onClick={get}
+				>
+					Get something
+				</button>
+				<button className='p-2 border border-grey-300 hover:bg-amber-300'>
+					<a href='api/test.json'>Get JSON</a>
+				</button> */}
 			</div>
 		</section>
 	);

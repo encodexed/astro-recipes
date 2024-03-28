@@ -7,11 +7,12 @@ const client = createClient({
 });
 
 export async function saveRecipe(title: string, body: string) {
-	const recipe = { title, body };
+	const slug = title.replaceAll(" ", "-").toLowerCase();
+	const recipe = { title, body, slug };
 
 	await client.execute({
-		sql: `INSERT INTO recipes VALUES (${title}, ${body})`,
-		args: recipe,
+		sql: `INSERT INTO recipes (title, body, slug) VALUES (?, ?, ?)`,
+		args: [title, body, slug],
 	});
 
 	return recipe;

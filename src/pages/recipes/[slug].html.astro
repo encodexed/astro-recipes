@@ -2,6 +2,8 @@
 import Layout from "../../layouts/Layout.astro";
 import {getCollection, getEntry} from "astro:content";
 
+export const prerender = true;
+
 export async function getStaticPaths() {
   return (await getCollection("recipes")).map(it => ({
     params: {slug: it.slug}
