@@ -1,21 +1,9 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import {getCollection, getEntry} from "astro:content";
-
-export const prerender = true;
-
-export async function getStaticPaths() {
-  return (await getCollection("recipes")).map(it => ({
-    params: {slug: it.slug}
-  }));
-};
-
-const {slug} = Astro.params;
-const recipe = await getEntry("recipes", slug);
-const {Content} = await recipe.render();
+import Layout from '../../layouts/Layout.astro';
+const slug = Astro.params.slug;
 ---
 
-<Layout title={`Rob's Recipes | ${recipe.data.title}`}>
-  <h1>{recipe.data.title}</h1>
-  <Content />
+<Layout title="Rob's Recipes">
+  <h1>Something is supposed to be here.</h1>
+  <p>{slug}</p>
 </Layout>
