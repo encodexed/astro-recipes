@@ -1,0 +1,15 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { $recipeData } from '../../../store/recipeData';
+
+const {id, slug} = Astro.params;
+const index = id ? +id - 1 : 0;
+const recipe = $recipeData.get().recipes[index];
+
+---
+
+<Layout title="Rob's Recipes">
+  <h1>{recipe.title}</h1>
+  <p>{recipe.body}</p>
+  <img src=`${recipe.image_url}` alt=`An image of ${recipe.title}`/>
+</Layout>
