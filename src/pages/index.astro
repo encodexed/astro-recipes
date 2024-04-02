@@ -1,18 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import type { storedData } from '../services/interfaces';
+import { $recipeData } from '../store/recipeData';
 
-const { storedData } = Astro.locals;
-console.log({storedData});
+const data: storedData = $recipeData.get();
 
 ---
 
 <Layout title="Rob's Recipes | Home">
 	<main>
 		<h1 class="text-5xl font-bold text-center">Welcome to Rob's Recipes</h1>
-		<!-- <ul>
-			{recipes.map(data => <li>
-			<a href=`/recipes/${data.slug}.html`>{data.title}</a>
+		<ul>
+			{data.recipes.map(recipe => <li>
+			<a href=`/recipes/${recipe.slug}.html`>{recipe.title}</a>
 			</li>)}
-		</ul> -->
+		</ul>
 	</main>
 </Layout>
