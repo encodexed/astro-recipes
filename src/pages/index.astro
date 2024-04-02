@@ -1,19 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { fetchRecipes } from '../services/db';
 
-const recipes = await fetchRecipes();
-console.log("Here we go:")
-console.log(recipes);
+const { storedData } = Astro.locals;
+console.log({storedData});
+
 ---
 
 <Layout title="Rob's Recipes | Home">
 	<main>
 		<h1 class="text-5xl font-bold text-center">Welcome to Rob's Recipes</h1>
-		<ul>
+		<!-- <ul>
 			{recipes.map(data => <li>
 			<a href=`/recipes/${data.slug}.html`>{data.title}</a>
 			</li>)}
-		</ul>
+		</ul> -->
 	</main>
 </Layout>
