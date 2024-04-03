@@ -5,11 +5,14 @@ import type { Row } from "@libsql/client";
 
 export const onRequest = defineMiddleware(async (context, next) => {
 	console.log("Middleware running.");
-	if ($recipeData.get().recipes.length === 0) {
+	const recipes = $recipeData.get();
+
+	if (recipes.recipes.length === 0 || recipes.isExpired) {
 		console.log("Fetching recipes in the middleware");
 		const recipes: Row[] = await fetchRecipes();
 		const storedData = {
 			dateRetrieved: new Date(),
+			isExpired: false,
 			recipes,
 		};
 		console.log("Logging storedData:");
