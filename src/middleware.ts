@@ -7,6 +7,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
 	console.log("Middleware running.");
 	const recipes = $recipeData.get();
 
+	// % If database has no recipes, this will API call on every run of the middleware.
 	if (recipes.recipes.length === 0 || recipes.isExpired) {
 		console.log("Fetching recipes in the middleware");
 		const recipes: Row[] = await fetchRecipes();

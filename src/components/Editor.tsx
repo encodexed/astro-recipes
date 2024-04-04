@@ -5,13 +5,14 @@ import AddInstructionsList from "./AddInstructionsList";
 const initialRecipeState: NewRecipeData = {
 	title: "",
 	body: "",
-	prepTimeMins: 0,
-	cookTimeMins: 0,
-	difficulty: 1,
+	prepTimeMins: "0",
+	cookTimeMins: "0",
+	difficulty: "1",
 	ingredients: "",
 	instructions: "",
-	servings: 1,
-	imageUrl: "",
+	servings: "1",
+	imageUrl:
+		"https://www.telegraph.co.uk/content/dam/food-and-drink/2017/03/23/recipes-written-out_trans_NvBQzQNjv4Bqeo_i_u9APj8RuoebjoAHt0k9u7HhRJvuo-ZLenGRumA.jpg",
 };
 
 const Editor = () => {
@@ -20,9 +21,10 @@ const Editor = () => {
 	const [instructionsCount, setInstructionsCount] = useState<number>(5);
 
 	const save = async () => {
+		const newRecipe = { ...initialRecipeState, ...recipe };
 		await fetch("/api/recipes", {
 			method: "POST",
-			body: JSON.stringify({ recipe }), // * Fix this section as it needs to apply business logic before it can be placed in db
+			body: JSON.stringify({ recipe: newRecipe }),
 		});
 	};
 
@@ -33,10 +35,6 @@ const Editor = () => {
 			: setRecipe({ ...recipe, instructions: str });
 	};
 
-	useEffect(() => {
-		console.log(recipe);
-	}, [recipe]);
-
 	return (
 		<section className='flex justify-center'>
 			<div className='my-4 p-4 w-1/3 border border-sky-300 flex flex-col gap-1 items-start'>
@@ -46,8 +44,8 @@ const Editor = () => {
 						className='p-2 border border-gray-400 w-2/3'
 						type='text'
 						name='title'
-						// value={recipe.title}
 						onBlur={(e) => setRecipe({ ...recipe, title: e.target.value })}
+						required
 					/>
 				</div>
 
@@ -59,10 +57,7 @@ const Editor = () => {
 						name='difficulty'
 						min={1}
 						max={5}
-						// value={recipe.difficulty}
-						onBlur={(e) =>
-							setRecipe({ ...recipe, difficulty: +e.target.value })
-						}
+						onBlur={(e) => setRecipe({ ...recipe, difficulty: e.target.value })}
 					/>
 				</div>
 
@@ -73,8 +68,7 @@ const Editor = () => {
 						type='number'
 						name='servings'
 						min={1}
-						// value={recipe.servings}
-						onBlur={(e) => setRecipe({ ...recipe, servings: +e.target.value })}
+						onBlur={(e) => setRecipe({ ...recipe, servings: e.target.value })}
 					/>
 				</div>
 
@@ -85,9 +79,8 @@ const Editor = () => {
 						type='number'
 						name='prepTime'
 						min={0}
-						// value={recipe.prepTimeMins}
 						onBlur={(e) =>
-							setRecipe({ ...recipe, prepTimeMins: +e.target.value })
+							setRecipe({ ...recipe, prepTimeMins: e.target.value })
 						}
 					/>
 				</div>
@@ -99,9 +92,8 @@ const Editor = () => {
 						type='number'
 						name='cookTime'
 						min={0}
-						// value={recipe.cookTimeMins}
 						onBlur={(e) =>
-							setRecipe({ ...recipe, cookTimeMins: +e.target.value })
+							setRecipe({ ...recipe, cookTimeMins: e.target.value })
 						}
 					/>
 				</div>
@@ -119,7 +111,6 @@ const Editor = () => {
 					<textarea
 						id='body'
 						className='p-2 border border-gray-400 w-2/3'
-						// value={recipe.body}
 						onBlur={(e) => setRecipe({ ...recipe, body: e.target.value })}
 						placeholder='Add some text you want to display alongside the recipe.'
 					/>
@@ -130,7 +121,6 @@ const Editor = () => {
 						className='p-2 border border-gray-400 w-2/3'
 						type='text'
 						name='imageUrl'
-						// value={recipe.title}
 						onBlur={(e) => setRecipe({ ...recipe, imageUrl: e.target.value })}
 					/>
 				</div>
