@@ -14,6 +14,6 @@ export interface NewRecipeData {
 	difficulty: number;
 	ingredients: string;
 	instructions: string;
-	servings: string;
+	servings: number;
 	imageUrl: string;
 }

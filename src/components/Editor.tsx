@@ -10,7 +10,7 @@ const initialRecipeState: NewRecipeData = {
 	difficulty: 1,
 	ingredients: "",
 	instructions: "",
-	servings: "",
+	servings: 1,
 	imageUrl: "",
 };
 
@@ -67,11 +67,24 @@ const Editor = () => {
 				</div>
 
 				<div className='flex gap-1 items-center'>
+					<label htmlFor='servings'>Servings</label>
+					<input
+						className='p-2 border border-gray-400 w-2/3'
+						type='number'
+						name='servings'
+						min={1}
+						// value={recipe.servings}
+						onBlur={(e) => setRecipe({ ...recipe, servings: +e.target.value })}
+					/>
+				</div>
+
+				<div className='flex gap-1 items-center'>
 					<label htmlFor='prepTime'>Prep Time (mins)</label>
 					<input
 						className='p-2 border border-gray-400 w-2/3'
 						type='number'
 						name='prepTime'
+						min={0}
 						// value={recipe.prepTimeMins}
 						onBlur={(e) =>
 							setRecipe({ ...recipe, prepTimeMins: +e.target.value })
@@ -85,6 +98,7 @@ const Editor = () => {
 						className='p-2 border border-gray-400 w-2/3'
 						type='number'
 						name='cookTime'
+						min={0}
 						// value={recipe.cookTimeMins}
 						onBlur={(e) =>
 							setRecipe({ ...recipe, cookTimeMins: +e.target.value })
@@ -108,6 +122,16 @@ const Editor = () => {
 						// value={recipe.body}
 						onBlur={(e) => setRecipe({ ...recipe, body: e.target.value })}
 						placeholder='Add some text you want to display alongside the recipe.'
+					/>
+				</div>
+				<div className='flex gap-1 items-center'>
+					<label htmlFor='imageUrl'>Image URL</label>
+					<input
+						className='p-2 border border-gray-400 w-2/3'
+						type='text'
+						name='imageUrl'
+						// value={recipe.title}
+						onBlur={(e) => setRecipe({ ...recipe, imageUrl: e.target.value })}
 					/>
 				</div>
 				<button
