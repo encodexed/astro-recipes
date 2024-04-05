@@ -4,13 +4,6 @@ import { checkRecipesExpired, getRecipes } from "./services/fn";
 
 export const onRequest = defineMiddleware(async (context, next) => {
 	const recipes = $recipeData.get();
-
-	if (!recipes || recipes.isExpired) {
-		console.log("Getting recipes");
-		getRecipes();
-	}
-
-	if (checkRecipesExpired()) getRecipes();
-
+	if (!recipes || recipes.isExpired || checkRecipesExpired()) getRecipes();
 	return next();
 });
