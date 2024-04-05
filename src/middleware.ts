@@ -10,6 +10,6 @@ export const onRequest = defineMiddleware(async (context, next) => {
 		recipes.isExpired ||
 		checkRecipesExpired()
 	)
-		getRecipes();
+		await getRecipes();
 	return next();
 });
