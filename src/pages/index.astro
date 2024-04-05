@@ -1,19 +1,19 @@
 ---
+import Card from '../components/Card.astro';
 import Layout from '../layouts/Layout.astro';
 import type { storedData } from '../services/interfaces';
 import { $recipeData } from '../store/recipeData';
 
 const data: storedData = $recipeData.get();
+const placeholderImage = "https://www.telegraph.co.uk/content/dam/food-and-drink/2017/03/23/recipes-written-out_trans_NvBQzQNjv4Bqeo_i_u9APj8RuoebjoAHt0k9u7HhRJvuo-ZLenGRumA.jpg";
 
 ---
 
 <Layout title="Rob's Recipes | Home">
-	<main>
-		<h1 class="text-5xl font-bold text-center">Welcome to Rob's Recipes</h1>
-		<ul>
-			{data.recipes.map(recipe => <li>
-			<a href=`/recipes/${recipe.id}/${recipe.slug}.html`>{recipe.title}</a>
-			</li>)}
-		</ul>
-	</main>
+	<h1 class="text-5xl font-bold text-center">Welcome to Rob's Recipes</h1>
+	<div class="flex flex-wrap justify-center gap-2">
+		{data.recipes.map(recipe =>
+		<Card href=`/recipes/${recipe.id}/${recipe.slug}.html` title={recipe.title} img={recipe.image_url || placeholderImage} servings={recipe.servings}/>
+		)}
+	</div>
 </Layout>

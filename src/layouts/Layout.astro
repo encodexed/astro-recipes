@@ -19,6 +19,10 @@ const { title, description = "A recipe site for Robbie" } = Astro.props;
 	</head>
 	<body>
 		<Header />
-		<slot />
+		<main class="mx-8 flex justify-center">
+			<div class="w-[700px] max-w-[1000px]">
+				<slot />
+			</div>
+		</main>
 	</body>
 </html>

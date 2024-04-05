@@ -2,7 +2,7 @@
 import Layout from '../../../layouts/Layout.astro';
 import { $recipeData } from '../../../store/recipeData';
 
-const {id, slug} = Astro.params;
+const {id} = Astro.params;
 const index = id ? +id - 1 : 0;
 const recipe = $recipeData.get().recipes[index];
 

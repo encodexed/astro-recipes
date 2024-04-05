@@ -9,9 +9,9 @@ export interface storedData {
 export interface NewRecipeData {
 	title: string;
 	body: string;
-	prepTimeMins: number;
-	cookTimeMins: number;
-	difficulty: number;
+	prepTimeMins: string;
+	cookTimeMins: string;
+	difficulty: string;
 	ingredients: string;
 	instructions: string;
 	servings: string;
