@@ -2,8 +2,12 @@
 const { href, title, img, servings } = Astro.props;
 ---
 
-<a href={href} class="w-40 rounded-lg hover:shadow overflow-hidden text-white text-center bg-black hover:scale-105 transition-all">
-  <img class="w-full h-40 object-cover object-center" src={img} alt=`${title} thumbnail`>
-  <h3 class="font-bold pt-2 p-4">{title}</h3>
-  <p>Servings: {servings}</p>
+<div class="relative w-[200px] rounded-lg overflow-hidden hover:scale-105 hover:shadow transition-all">
+<a href={href}>
+  <div class="w-full absolute bottom-0 h-20 p-2 text-white bg-gradient-to-b from-transparent to-black flex items-end">
+    <h3 class="font-bold">{title}</h3>
+  </div>
+  <img class="w-full h-[200px] object-cover object-center" src={img} alt=`${title} thumbnail`>
+  
 </a>
+</div>

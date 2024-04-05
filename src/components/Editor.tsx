@@ -11,8 +11,7 @@ const initialRecipeState: NewRecipeData = {
 	ingredients: "",
 	instructions: "",
 	servings: "1",
-	imageUrl:
-		"https://www.telegraph.co.uk/content/dam/food-and-drink/2017/03/23/recipes-written-out_trans_NvBQzQNjv4Bqeo_i_u9APj8RuoebjoAHt0k9u7HhRJvuo-ZLenGRumA.jpg",
+	imageUrl: "",
 };
 
 const Editor = () => {
