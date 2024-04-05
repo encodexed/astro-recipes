@@ -4,6 +4,12 @@ import { checkRecipesExpired, getRecipes } from "./services/fn";
 
 export const onRequest = defineMiddleware(async (context, next) => {
 	const recipes = $recipeData.get();
-	if (!recipes || recipes.isExpired || checkRecipesExpired()) getRecipes();
+	// % This will send API calls on every request when there's no recipes in the db
+	if (
+		recipes.recipes.length === 0 ||
+		recipes.isExpired ||
+		checkRecipesExpired()
+	)
+		getRecipes();
 	return next();
 });
