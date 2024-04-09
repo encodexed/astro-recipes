@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { NewRecipeData } from "../services/interfaces";
 import AddIngredientsList from "./AddIngredientsList";
 import AddInstructionsList from "./AddInstructionsList";
 const initialRecipeState: NewRecipeData = {
 	title: "",
 	body: "",
+	description: "",
 	prepTimeMins: "0",
 	cookTimeMins: "0",
 	difficulty: "1",
@@ -36,7 +37,7 @@ const Editor = () => {
 
 	return (
 		<section className='flex justify-center'>
-			<div className='my-4 p-4 w-1/3 border border-sky-300 flex flex-col gap-1 items-start'>
+			<div className='my-4 p-4 border border-sky-300 flex flex-col gap-1 items-start'>
 				<div className='flex gap-1 items-center'>
 					<label htmlFor='title'>Title</label>
 					<input
@@ -44,6 +45,19 @@ const Editor = () => {
 						type='text'
 						name='title'
 						onBlur={(e) => setRecipe({ ...recipe, title: e.target.value })}
+						required
+					/>
+				</div>
+
+				<div className='flex gap-1 items-center'>
+					<label htmlFor='description'>Short Description</label>
+					<input
+						className='p-2 border border-gray-400 w-2/3'
+						type='text'
+						name='description'
+						onBlur={(e) =>
+							setRecipe({ ...recipe, description: e.target.value })
+						}
 						required
 					/>
 				</div>

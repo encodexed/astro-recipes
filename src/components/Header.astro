@@ -1,23 +1,33 @@
+---
+import SearchBar from "../components/SearchBar";
+---
 <header>
-  <nav class='flex justify-between items-center bg-sky-100 h-10 p-2 w-full fixed'>
-    <div class='flex gap-1 items-center'>
-      <img src='/favicon.svg' width='30' height='30' alt='recipes icon' />
-      <a href="/"><h3 class='font-bold text-lg text-sky-700 hover:text-black hover:underline'>Rob's Recipes</h3></a>
+  <nav class='flex justify-between items-center bg-white h-16 px-4 w-full fixed'>
+    <div class='flex gap-2 w-1/3 items-center'>
+      <img src='/favicon.svg' width='50' height='50' alt='recipes icon'/>
+      <a href="/"><h3 class='font-bold text-sky-700 hover:text-black hover:underline font-heading text-3xl'>Rob's Recipes</h3></a>
+      <SearchBar client:load />
     </div>
-    <div>
-      <ul class='flex gap-4 items-center'>
-        <li class='text-sm font-bold hover:underline hover:text-sky-700'>
-          <a href=''>Recipes</a>
+    <div class="w-1/3 flex justify-center">
+      <ul class='flex gap-8 items-center text-lg font-bold'>
+        <li class='underline-offset-4 decoration-2 hover:underline hover:text-sky-700'>
+          <a href='/browse'>Browse</a>
         </li>
-        <li class='text-sm font-bold hover:underline hover:text-sky-700'>
-          <a href='/write'>Add New</a>
+        <li class='underline-offset-4 decoration-2 hover:underline hover:text-sky-700'>
+          <a href='/write'>Create</a>
         </li>
-        <li class='text-sm font-bold hover:underline hover:text-sky-700'>
-          <a href='/about'>About</a>
+        <li class='underline-offset-4 decoration-2 hover:underline hover:text-sky-700'>
+          <a href='/about'>Categories</a>
         </li>
-        
       </ul>
     </div>
+    <div class="w-1/3 flex gap-2 justify-end items-center">
+      <a href="https://facebook.com" target="_blank"><img src="/facebook-icon.svg" alt="" width="30" height="30"></a>
+      <a href="https://instagram.com" target="_blank"><img src="/instagram-icon.svg" alt="" width="30" height="30"></a>
+      <a href="https://x.com" target="_blank"><img src="/twitter-icon.svg" alt="" width="30" height="30"></a>
+      <a href="https://www.linkedin.com/in/robbie-gollan-b05684261/" target="_blank"><img src="/linkedin-icon.svg" alt="" width="30" height="30"></a>
+      <a href="https://github.com/encodexed" target="_blank"><img src="/github-icon.svg" alt="" width="30" height="30"></a>
+    </div>
   </nav>
-  <div id='header-spacer' class='h-10' />
+  <div id='header-spacer' class='h-16' />
 </header>
