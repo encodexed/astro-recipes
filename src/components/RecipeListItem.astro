@@ -1,0 +1,11 @@
+---
+import Card from "./Card.astro";
+
+const { href, title, img, servings } = Astro.props;
+---
+<article class="w-[200px]">
+  <Card href={href} title={title} img={img} />
+  <div class="flex flex-col">
+    <a href={href}><h5 class="font-heading text-lg hover:text-sky-700">{title}</h5></a>
+  </div>
+</article>

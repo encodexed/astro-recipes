@@ -5,6 +5,7 @@ import AddInstructionsList from "./AddInstructionsList";
 const initialRecipeState: NewRecipeData = {
 	title: "",
 	body: "",
+	description: "",
 	prepTimeMins: "0",
 	cookTimeMins: "0",
 	difficulty: "1",
@@ -44,6 +45,19 @@ const Editor = () => {
 						type='text'
 						name='title'
 						onBlur={(e) => setRecipe({ ...recipe, title: e.target.value })}
+						required
+					/>
+				</div>
+
+				<div className='flex gap-1 items-center'>
+					<label htmlFor='description'>Short Description</label>
+					<input
+						className='p-2 border border-gray-400 w-2/3'
+						type='text'
+						name='description'
+						onBlur={(e) =>
+							setRecipe({ ...recipe, description: e.target.value })
+						}
 						required
 					/>
 				</div>

@@ -1,0 +1,13 @@
+---
+import type { storedData } from '../services/interfaces';
+import { $recipeData } from '../store/recipeData';
+import RecipeListItem from '../components/RecipeListItem.astro';
+
+const data: storedData = $recipeData.get();
+const placeholderImage = "https://www.telegraph.co.uk/content/dam/food-and-drink/2017/03/23/recipes-written-out_trans_NvBQzQNjv4Bqeo_i_u9APj8RuoebjoAHt0k9u7HhRJvuo-ZLenGRumA.jpg";
+---
+<div class="flex flex-wrap justify-center gap-4">
+  {data.recipes.map(recipe =>
+  <RecipeListItem href=`/recipes/${recipe.id}/${recipe.slug}.html` title={recipe.title} img={recipe.image_url || placeholderImage} servings={recipe.servings}/>
+  )}
+</div>

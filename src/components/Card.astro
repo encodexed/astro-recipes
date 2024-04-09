@@ -4,10 +4,7 @@ const { href, title, img, servings } = Astro.props;
 
 <div class="relative w-[200px] rounded-lg overflow-hidden hover:scale-105 hover:shadow transition-all">
 <a href={href}>
-  <div class="w-full absolute bottom-0 h-20 p-2 text-white bg-gradient-to-b from-transparent to-black flex items-end">
-    <h3 class="font-heading">{title}</h3>
-  </div>
+  <div class="w-full absolute bottom-0 h-20 p-2 text-white bg-gradient-to-b from-transparent to-black flex items-end" />
   <img class="w-full h-[200px] object-cover object-center" src={img} alt=`${title} thumbnail`>
-  
 </a>
 </div>
