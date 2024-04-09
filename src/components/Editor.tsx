@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { NewRecipeData } from "../services/interfaces";
 import AddIngredientsList from "./AddIngredientsList";
 import AddInstructionsList from "./AddInstructionsList";
@@ -36,7 +36,7 @@ const Editor = () => {
 
 	return (
 		<section className='flex justify-center'>
-			<div className='my-4 p-4 w-1/3 border border-sky-300 flex flex-col gap-1 items-start'>
+			<div className='my-4 p-4 border border-sky-300 flex flex-col gap-1 items-start'>
 				<div className='flex gap-1 items-center'>
 					<label htmlFor='title'>Title</label>
 					<input
