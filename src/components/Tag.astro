@@ -1,0 +1,38 @@
+---
+const { str } = Astro.props;
+
+let tagBgColor = '';
+let tagTextColor = '';
+console.log(str);
+
+switch (str) {
+    case 'Main Course':
+      tagBgColor = 'bg-red-500';
+      tagTextColor = 'text-white';
+      break;
+    case 'Side':
+      tagBgColor = 'bg-green-500';
+      tagTextColor = 'text-white';
+      break;
+    case 'Beverage':
+      tagBgColor = 'bg-blue-500';
+      tagTextColor = 'text-white';
+      break;
+    case 'Alcoholic':
+      tagBgColor = 'bg-black';
+      tagTextColor = 'text-white';
+      break;
+    case 'Dessert':
+      tagBgColor = 'bg-pink-500';
+      tagTextColor = 'text-white';
+      break;
+    case 'Appertiser':
+      tagBgColor = 'bg-orange-500';
+      tagTextColor = 'text-black';
+      break;
+    default:
+      tagBgColor = 'bg-yellow-500';
+      tagTextColor = 'text-black';
+  }
+---
+<span class={`${tagBgColor} ${tagTextColor} px-2 rounded-xl text-xs`}>{str}</span>
