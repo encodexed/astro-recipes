@@ -29,10 +29,9 @@ const AddInstructionsList = ({
 						arr.push(
 							<input
 								key={`instruction${i}`}
-								className='border border-gray-300'
+								className='p-2 border border-gray-400'
 								type='text'
 								id={`instruction${i}`}
-								// name={`instruction${i}`}
 								onBlur={(e) => {
 									updateValues(i, e.target.value);
 								}}
