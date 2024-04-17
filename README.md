@@ -2,7 +2,7 @@
 
 #### A simple full-stack application exploring the AstroJS framework
 
-_screenshot_
+<img width="1240" alt="astro-recipes-1" src="https://github.com/encodexed/astro-recipes/assets/107448691/696f62b9-e300-4654-b50f-f26e66b669f6">
 
 ## Requirements / Purpose
 
