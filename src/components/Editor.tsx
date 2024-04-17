@@ -36,59 +36,74 @@ const Editor = () => {
 	};
 
 	return (
-		<section className='flex justify-center'>
-			<div className='my-4 p-4 border border-sky-300 flex flex-col gap-1 items-start'>
-				<div className='flex gap-1 items-center'>
-					<label htmlFor='title'>Title</label>
-					<input
-						className='p-2 border border-gray-400 w-2/3'
-						type='text'
-						name='title'
-						onBlur={(e) => setRecipe({ ...recipe, title: e.target.value })}
-						required
-					/>
-				</div>
+		<section className='justify-center my-4 flex flex-col gap-1 items-start'>
+			<div className='flex flex-col w-full'>
+				<label htmlFor='title' className='font-bold'>
+					Recipe Name
+				</label>
+				<input
+					className='p-2 border border-gray-400'
+					type='text'
+					name='title'
+					onBlur={(e) => setRecipe({ ...recipe, title: e.target.value })}
+					required
+				/>
+			</div>
 
-				<div className='flex gap-1 items-center'>
-					<label htmlFor='description'>Short Description</label>
-					<input
-						className='p-2 border border-gray-400 w-2/3'
-						type='text'
-						name='description'
-						onBlur={(e) =>
-							setRecipe({ ...recipe, description: e.target.value })
-						}
-						required
-					/>
-				</div>
+			<div className='flex flex-col w-full'>
+				<label className='font-bold' htmlFor='description'>
+					Short Description
+				</label>
+				<input
+					className='p-2 border border-gray-400'
+					type='text'
+					name='description'
+					onBlur={(e) => setRecipe({ ...recipe, description: e.target.value })}
+					required
+				/>
+			</div>
 
-				<div className='flex gap-1 items-center'>
-					<label htmlFor='difficulty'>Difficulty</label>
-					<input
-						className='p-2 border border-gray-400 w-2/3'
-						type='number'
+			<div className='flex gap-4 w-full justify-center'>
+				<div className='flex flex-col w-full'>
+					<label className='font-bold' htmlFor='difficulty'>
+						Difficulty
+					</label>
+					<select
+						className='p-2 border border-gray-400 bg-white'
 						name='difficulty'
-						min={1}
-						max={5}
-						onBlur={(e) => setRecipe({ ...recipe, difficulty: e.target.value })}
-					/>
+						id='difficulty'
+						onChange={(e) =>
+							setRecipe({ ...recipe, difficulty: e.target.value })
+						}
+					>
+						<option value='1'>Easy</option>
+						<option value='2'>Intermediate</option>
+						<option value='3'>Hard</option>
+						<option value='4'>Heston Blumenthal</option>
+					</select>
 				</div>
 
-				<div className='flex gap-1 items-center'>
-					<label htmlFor='servings'>Servings</label>
+				<div className='flex flex-col w-full'>
+					<label className='font-bold' htmlFor='servings'>
+						Servings
+					</label>
 					<input
-						className='p-2 border border-gray-400 w-2/3'
+						className='p-2 border border-gray-400'
 						type='number'
 						name='servings'
 						min={1}
 						onBlur={(e) => setRecipe({ ...recipe, servings: e.target.value })}
 					/>
 				</div>
+			</div>
 
-				<div className='flex gap-1 items-center'>
-					<label htmlFor='prepTime'>Prep Time (mins)</label>
+			<div className='flex gap-4 w-full justify-center'>
+				<div className='flex flex-col w-full'>
+					<label className='font-bold' htmlFor='prepTime'>
+						Prep Time (mins)
+					</label>
 					<input
-						className='p-2 border border-gray-400 w-2/3'
+						className='p-2 border border-gray-400'
 						type='number'
 						name='prepTime'
 						min={0}
@@ -98,10 +113,12 @@ const Editor = () => {
 					/>
 				</div>
 
-				<div className='flex gap-1 items-center'>
-					<label htmlFor='cookTime'>Cooking Time (mins)</label>
+				<div className='flex flex-col w-full'>
+					<label className='font-bold' htmlFor='cookTime'>
+						Cooking Time (mins)
+					</label>
 					<input
-						className='p-2 border border-gray-400 w-2/3'
+						className='p-2 border border-gray-400'
 						type='number'
 						name='cookTime'
 						min={0}
@@ -110,40 +127,44 @@ const Editor = () => {
 						}
 					/>
 				</div>
-				<AddIngredientsList
-					quantity={ingredientsCount}
-					updateFormField={updateFormFields}
-				/>
-				<AddInstructionsList
-					quantity={instructionsCount}
-					updateFormField={updateFormFields}
-				/>
-
-				<div className='flex gap-1 items-center'>
-					<label htmlFor='body'>Notes</label>
-					<textarea
-						id='body'
-						className='p-2 border border-gray-400 w-2/3'
-						onBlur={(e) => setRecipe({ ...recipe, body: e.target.value })}
-						placeholder='Add some text you want to display alongside the recipe.'
-					/>
-				</div>
-				<div className='flex gap-1 items-center'>
-					<label htmlFor='imageUrl'>Image URL</label>
-					<input
-						className='p-2 border border-gray-400 w-2/3'
-						type='text'
-						name='imageUrl'
-						onBlur={(e) => setRecipe({ ...recipe, imageUrl: e.target.value })}
-					/>
-				</div>
-				<button
-					className='p-2 border border-grey-300 hover:bg-green-300'
-					onClick={save}
-				>
-					Save
-				</button>
 			</div>
+			<AddIngredientsList
+				quantity={ingredientsCount}
+				updateFormField={updateFormFields}
+			/>
+			<AddInstructionsList
+				quantity={instructionsCount}
+				updateFormField={updateFormFields}
+			/>
+
+			<div className='flex flex-col w-full'>
+				<label className='font-bold' htmlFor='body'>
+					Notes
+				</label>
+				<textarea
+					id='body'
+					className='p-2 border border-gray-400'
+					onBlur={(e) => setRecipe({ ...recipe, body: e.target.value })}
+					placeholder='Add some text you want to display alongside the recipe.'
+				/>
+			</div>
+			<div className='flex flex-col w-full'>
+				<label className='font-bold' htmlFor='imageUrl'>
+					Image URL
+				</label>
+				<input
+					className='p-2 border border-gray-400'
+					type='text'
+					name='imageUrl'
+					onBlur={(e) => setRecipe({ ...recipe, imageUrl: e.target.value })}
+				/>
+			</div>
+			<button
+				className='p-2 border border-grey-300 hover:bg-green-300'
+				onClick={save}
+			>
+				Save
+			</button>
 		</section>
 	);
 };

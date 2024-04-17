@@ -1,12 +1,20 @@
 ---
 import Card from "./Card.astro";
+import Tag from "./Tag.astro";
 
-const { href, title, img, servings, description } = Astro.props;
+const { href, title, img, description, dietary, tags } = Astro.props;
+const tagsArr: string[] = tags.split(",").map((tag: string) => tag.trim());
+
 ---
 <article class="w-[200px]">
   <Card href={href} title={title} img={img} />
   <div class="flex flex-col">
     <a href={href}><h5 class="truncate font-heading text-lg hover:text-sky-700">{title}</h5></a>
-    <p class="text-sm leading-none">{description}</p>
+    <div class="flex flex-wrap gap-1">
+      {tagsArr.map((tag) => {
+        return <Tag str={tag} />
+      })}
+    </div>
+    <p class="text-sm leading-none mt-1">{description}</p>
   </div>
 </article>

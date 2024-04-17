@@ -29,7 +29,7 @@ const AddIngredientsList = ({
 						arr.push(
 							<input
 								key={`ingredients${i}`}
-								className='border border-gray-300'
+								className='p-2 border border-gray-400'
 								type='text'
 								id={`ingredients${i}`}
 								onBlur={(e) => {
