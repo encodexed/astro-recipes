@@ -4,7 +4,6 @@ import type { storedData } from "./interfaces";
 import { $recipeData } from "../store/recipeData";
 
 export const getRecipes = async (): Promise<void> => {
-	console.log("Getting recipes...");
 	const recipes: Row[] = await fetchRecipes();
 	const storedData: storedData = {
 		dateRetrieved: new Date(),

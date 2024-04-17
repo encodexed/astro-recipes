@@ -1,54 +1,44 @@
-# Astro Starter Kit: Basics
+# Rob's Recipes (WIP)
 
-```sh
-npm create astro@latest -- --template basics
+#### A simple full-stack application exploring the AstroJS framework
+
+_screenshot_
+
+## Requirements / Purpose
+
+This project focuses on two objectives: building a first project using the AstroJS full-stack framework, and styling a website that I would actually use to upload my favourite recipes for reference later in my culinary adventures (there are not many currently).
+
+I wanted to investigate Astro because of the allure of building vanilla HTML/CSS pages where necessary, while only adding JavaScript functionality where it's needed. ReactJS is my chosen library for interactivity, so only hydrating the pages/components that require it helps reduce the heaviness of having just a React application when only certain 'islands' require the functionality that it serves. The result is a smaller load-size and a quicker paint, with less technicality in the development environment.
+
+I have included [Nanostores](https://www.npmjs.com/package/nanostores) as a lightweight replacement for React Context, to help with persistent server data on the frontend and to reduce the amount of API calls being made to the Turso database.
+
+**Tech Stack:** HTML, Tailwind CSS, TypeScript, ReactJS, AstroJS, TursoDB
+
+## Build Steps
+
+To get this project running in your local environment, paste this into your terminal:
+
+```bash
+git clone git@github.com:encodexed/astro-recipes.git
+cd astro-recipes
+npm install
+npm run dev
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## Design Goals / Approach
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- Given that PC players of ESO have third party mods that can give a more integrated benefit to aspiring alchemists, this app's audience involves those not willing to install third party mods, or Xbox/Playstation users.
+- With that in mind, the app was designed to fit a small screen device first, with some consideration given to those who used larger screens secondarily.
+- The app boasts a very high degree of accuracy but not 100%, as far as I can tell. This is due to some unknowns regarding the in-game system. The entire logic system to emulate the game was written from scratch by me.
+- Data is kept locally and in-memory storage is used extensively as React's `useContext` serves the project well (compared to the previous iteration that featured plenty of messy prop drilling)
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+## Known issues
 
-## 🚀 Project Structure
+No known issues apart from the website _not being finished yet_.
 
-Inside of your Astro project, you'll see the following folders and files:
+Feel free to [raise an issue]('https://github.com/encodexed/astro-recipes/issues') if you discover a bug or anything else.
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## Future Goals
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- Complete the project
+- Add responsiveness for different media sizes
