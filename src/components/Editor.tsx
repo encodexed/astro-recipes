@@ -2,6 +2,7 @@ import { useState } from "react";
 import type { NewRecipeData } from "../services/interfaces";
 import AddIngredientsList from "./AddIngredientsList";
 import AddInstructionsList from "./AddInstructionsList";
+import Divider from "./Divider";
 const initialRecipeState: NewRecipeData = {
 	title: "",
 	body: "",
@@ -37,17 +38,38 @@ const Editor = () => {
 
 	return (
 		<section className='justify-center my-4 flex flex-col gap-1 items-start'>
-			<div className='flex flex-col w-full'>
-				<label htmlFor='title' className='font-bold'>
-					Recipe Name
-				</label>
-				<input
-					className='p-2 border border-gray-400'
-					type='text'
-					name='title'
-					onBlur={(e) => setRecipe({ ...recipe, title: e.target.value })}
-					required
-				/>
+			<div className='flex gap-4 w-full'>
+				<div className='flex flex-col w-2/3'>
+					<label htmlFor='title' className='font-bold'>
+						Recipe Name
+					</label>
+					<input
+						className='p-2 border border-gray-400'
+						type='text'
+						name='title'
+						onBlur={(e) => setRecipe({ ...recipe, title: e.target.value })}
+						required
+					/>
+				</div>
+
+				<div className='flex flex-col w-1/3'>
+					<label className='font-bold' htmlFor='difficulty'>
+						Difficulty
+					</label>
+					<select
+						className='p-2 py-[9px] border border-gray-400 bg-white'
+						name='difficulty'
+						id='difficulty'
+						onChange={(e) =>
+							setRecipe({ ...recipe, difficulty: e.target.value })
+						}
+					>
+						<option value='1'>Easy</option>
+						<option value='2'>Intermediate</option>
+						<option value='3'>Hard</option>
+						<option value='4'>Heston Blumenthal</option>
+					</select>
+				</div>
 			</div>
 
 			<div className='flex flex-col w-full'>
@@ -63,42 +85,8 @@ const Editor = () => {
 				/>
 			</div>
 
-			<div className='flex gap-4 w-full justify-center'>
-				<div className='flex flex-col w-full'>
-					<label className='font-bold' htmlFor='difficulty'>
-						Difficulty
-					</label>
-					<select
-						className='p-2 border border-gray-400 bg-white'
-						name='difficulty'
-						id='difficulty'
-						onChange={(e) =>
-							setRecipe({ ...recipe, difficulty: e.target.value })
-						}
-					>
-						<option value='1'>Easy</option>
-						<option value='2'>Intermediate</option>
-						<option value='3'>Hard</option>
-						<option value='4'>Heston Blumenthal</option>
-					</select>
-				</div>
-
-				<div className='flex flex-col w-full'>
-					<label className='font-bold' htmlFor='servings'>
-						Servings
-					</label>
-					<input
-						className='p-2 border border-gray-400'
-						type='number'
-						name='servings'
-						min={1}
-						onBlur={(e) => setRecipe({ ...recipe, servings: e.target.value })}
-					/>
-				</div>
-			</div>
-
-			<div className='flex gap-4 w-full justify-center'>
-				<div className='flex flex-col w-full'>
+			<div className='flex gap-4 w-full'>
+				<div className='flex flex-col w-1/3'>
 					<label className='font-bold' htmlFor='prepTime'>
 						Prep Time (mins)
 					</label>
@@ -113,7 +101,7 @@ const Editor = () => {
 					/>
 				</div>
 
-				<div className='flex flex-col w-full'>
+				<div className='flex flex-col w-1/3'>
 					<label className='font-bold' htmlFor='cookTime'>
 						Cooking Time (mins)
 					</label>
@@ -127,15 +115,33 @@ const Editor = () => {
 						}
 					/>
 				</div>
+
+				<div className='flex flex-col w-1/3'>
+					<label className='font-bold' htmlFor='servings'>
+						Servings
+					</label>
+					<input
+						className='p-2 border border-gray-400'
+						type='number'
+						name='servings'
+						min={1}
+						onBlur={(e) => setRecipe({ ...recipe, servings: e.target.value })}
+					/>
+				</div>
 			</div>
+
+			<Divider />
+
 			<AddIngredientsList
 				quantity={ingredientsCount}
 				updateFormField={updateFormFields}
 			/>
-			<AddInstructionsList
+			{/* <AddInstructionsList
 				quantity={instructionsCount}
 				updateFormField={updateFormFields}
-			/>
+			/> */}
+
+			<Divider />
 
 			<div className='flex flex-col w-full'>
 				<label className='font-bold' htmlFor='body'>
@@ -160,7 +166,7 @@ const Editor = () => {
 				/>
 			</div>
 			<button
-				className='p-2 border border-grey-300 hover:bg-green-300'
+				className='p-2 border border-gray-400 hover:bg-green-300 bg-white'
 				onClick={save}
 			>
 				Save
