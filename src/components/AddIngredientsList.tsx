@@ -11,12 +11,18 @@ const AddIngredientsList = ({
 	const [values, setValues] = useState<string[]>([]);
 	const [ingredientField, setIngredientField] = useState<string>("");
 
+	const removeFromList = (index: number) => {
+		const newValues = [...values].slice(index, index + 1);
+		setValues(newValues);
+	};
+
 	const list = values.map((ingredient, index) => {
 		return (
 			<IngredientTag
 				key={`${ingredient.charAt(0)}-${index}`}
 				index={index}
 				name={ingredient}
+				remove={removeFromList}
 			/>
 		);
 	});
@@ -24,11 +30,6 @@ const AddIngredientsList = ({
 	const addToList = () => {
 		setValues([...values, ingredientField]);
 		setIngredientField("");
-	};
-
-	const removeFromList = (index: number) => {
-		// const newValues = [...values].slice(index, index + 1);
-		// setValues(newValues);
 	};
 
 	return (
@@ -61,7 +62,7 @@ const AddIngredientsList = ({
 					</button>
 				</div>
 			</div>
-			<div className='flex flex-wrap gap-2'>
+			<div className='flex flex-wrap gap-2 py-1'>
 				{values.length ? list : <p>No Ingredients entered yet.</p>}
 			</div>
 		</div>
